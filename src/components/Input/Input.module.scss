@@ -1,0 +1,11 @@
+.Input {
+    margin-bottom: 15px;
+
+    span {
+        color: red;
+    }
+
+    &.invalid label{
+         color: red;
+    }
+}
