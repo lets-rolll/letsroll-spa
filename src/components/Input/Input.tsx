@@ -1,4 +1,3 @@
-import React from 'react'
 import cn from 'classnames'
 import styles from './Input.module.scss'
 import { InputHTMLAttributes } from 'react'
@@ -7,21 +6,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     type?: string
     label?: string
     value?: string
-    // errorMessage?: string
+    touched?: boolean | undefined
+    errors?: string | undefined
 }
 
-// const isInvalid = (props: InputProps): boolean => {
-//     return true;
-// }
+export function Input({type, label, value, touched, errors, ...attrs}: InputProps) {
+    let classNames = cn(styles.Input, {[styles.invalid] : errors && touched})
 
-export function Input({type, label, value, ...attrs}: InputProps) {
-    let classNames = cn(styles.Input)
     const htmlFor = `${type}-${Math.random()}`
-
-
-    // if() {
-    //    classNames += ` ${styles.invalid}` 
-    // }
 
     return (
        <div className={classNames}>
@@ -32,7 +24,7 @@ export function Input({type, label, value, ...attrs}: InputProps) {
             id = {htmlFor}
             {...attrs}
         />
-        {/* <span>{errorMessage}</span> */}
+        {touched && errors && <div className={styles.Error}>{errors}</div>}
        </div>
     )
 }

@@ -2,13 +2,33 @@ import { useFormik } from "formik";
 import { Input } from "../Input/Input";
 import * as yup from "yup";
 
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+
 const SignupSchema = yup.object().shape({
-  firstName: yup.string().required("Required"),
+  firstName: yup
+    .string()
+    .max(15, "Must be 15 characters or less")
+    .required("Required"),
+  middleName: yup
+    .string()
+    .max(15, "Must be 15 characters or less")
+    .required("Required"),
+  lastName: yup
+    .string()
+    .max(15, "Must be 15 characters or less")
+    .required("Required"),
+  age: yup
+    .number()
+    .positive()
+    .integer()
+    .max(150, "Too Much!")
+    .required("Required"),
   email: yup.string().required("Required").email("Invalid email"),
   password: yup
     .string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
+    .matches(passwordRules, { message: "Please create a stronger password" })
     .required("Required"),
 
   confirmPassword: yup
@@ -29,11 +49,14 @@ export function AuthForm() {
     dirty,
   } = useFormik({
     initialValues: {
-      firstName: "",
       lastName: "",
+      firstName: "",
+      middleName: "",
+      age: "",
+      email: "",
+      phoneNumber: "",
       confirmPassword: "",
       password: "",
-      email: "",
     },
 
     validationSchema: SignupSchema,
@@ -43,15 +66,9 @@ export function AuthForm() {
     },
   });
 
-  //   const submitHandler = (event: React.FormEvent) => {
-  //     event.preventDefault();
-  //   };
-
   const loginHandler = () => {};
 
   const registerHandler = () => {};
-
-  //   const changeHandler = () => {};
 
   return (
     <form onSubmit={handleSubmit} noValidate>
@@ -61,9 +78,39 @@ export function AuthForm() {
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.firstName}
+        touched={touched.firstName}
+        errors={errors.firstName}
       />
 
-      {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
+      <Input
+        label="Фамилия"
+        name="lastName"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.lastName}
+        touched={touched.lastName}
+        errors={errors.lastName}
+      />
+
+      <Input
+        label="Отчество"
+        name="middleName"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.middleName}
+        touched={touched.middleName}
+        errors={errors.middleName}
+      />
+
+      <Input
+        label="Возраст"
+        name="age"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.age}
+        touched={touched.age}
+        errors={errors.age}
+      />
 
       <Input
         type="email"
@@ -72,9 +119,9 @@ export function AuthForm() {
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.email}
+        touched={touched.email}
+        errors={errors.email}
       />
-
-      {touched.email && errors.email && <div>{errors.email}</div>}
 
       <Input
         type="password"
@@ -83,9 +130,9 @@ export function AuthForm() {
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.password}
+        touched={touched.password}
+        errors={errors.password}
       />
-
-      {touched.password && errors.password && <div>{errors.password}</div>}
 
       <Input
         type="password"
@@ -94,11 +141,9 @@ export function AuthForm() {
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.confirmPassword}
+        touched={touched.confirmPassword}
+        errors={errors.confirmPassword}
       />
-
-      {touched.confirmPassword && errors.confirmPassword && (
-        <div>{errors.confirmPassword}</div>
-      )}
 
       <button onClick={loginHandler}>Войти</button>
 
