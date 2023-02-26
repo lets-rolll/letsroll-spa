@@ -1,0 +1,24 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "Post 1",
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente molestiae tempore harum praesentium accusantium quod voluptatibus aperiam nobis dolorum! Magni vitae veritatis fuga impedit eaque. Ut quis aspernatur totam expedita!",
+            "liked": false
+        },
+
+        {
+            "id": 2,
+            "title": "Post 2",
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente molestiae tempore harum praesentium accusantium quod voluptatibus aperiam nobis dolorum! Magni vitae veritatis fuga impedit eaque. Ut quis aspernatur totam expedita!",
+            "liked": false
+        },
+
+        {
+            "id": 3,
+            "title": "Post 3",
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente molestiae tempore harum praesentium accusantium quod voluptatibus aperiam nobis dolorum! Magni vitae veritatis fuga impedit eaque. Ut quis aspernatur totam expedita!",
+            "liked": false
+        }
+    ]
+}

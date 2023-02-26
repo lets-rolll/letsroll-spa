@@ -1,8 +1,8 @@
 import { YMaps } from '@pbe/react-yandex-maps';
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Navigation } from './components/Navigation/Navigation';
 import { AuthPage } from './pages/AuthPage/AuthPage';
+import { BlogPage } from './pages/BlogPage/BlogPage';
 import { ContactFormPage } from './pages/ContactFormPage/ContactFormPage';
 import { MapPage } from './pages/MapPage/MapPage';
 
@@ -16,8 +16,9 @@ function App() {
         <Navigation/>
         <Routes>
             <Route path='/map' element={<MapPage/>}/>
-            <Route path='/auth' element={<AuthPage/>}/>
+            <Route path='/join' element={<AuthPage/>}/>
             <Route path='/contactform' element={<ContactFormPage/>}/>
+            <Route path='/blog' element={<BlogPage/>}/>
         </Routes>
     </YMaps>
     </>
