@@ -11,9 +11,6 @@ import { MapPage } from './pages/MapPage/MapPage';
 function App() {
   return (
     <>
-    <YMaps query={{apikey: '297ad0a5-92db-4580-978e-9cd4a3ebdaa5',
-    ns: "use-load-option", 
-    load: "Map,Placemark,control.ZoomControl,geoObject.addon.balloon"}}>
         <Navigation/>
         <Routes>
             <Route path='/map' element={<MapPage/>}/>
