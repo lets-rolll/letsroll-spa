@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { Input } from "../Input/Input";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
@@ -66,7 +67,7 @@ export function AuthForm() {
     },
   });
 
-  const loginHandler = () => {};
+  let navigate = useNavigate();
 
   const registerHandler = () => {};
 
@@ -102,7 +103,7 @@ export function AuthForm() {
         errors={errors.middleName}
       />
 
-      <Input
+      {/* <Input
         label="Возраст"
         name="age"
         onChange={handleChange}
@@ -110,7 +111,7 @@ export function AuthForm() {
         value={values.age}
         touched={touched.age}
         errors={errors.age}
-      />
+      /> */}
 
       <Input
         type="email"
@@ -145,8 +146,6 @@ export function AuthForm() {
         errors={errors.confirmPassword}
       />
 
-      <button onClick={loginHandler}>Войти</button>
-
       <button
         disabled={!isValid && !dirty}
         type="submit"
@@ -154,6 +153,10 @@ export function AuthForm() {
       >
         Зарегистрироваться
       </button>
+
+      <>или</>
+
+      <button onClick={() => navigate("/sign-in")}>Войти</button>
     </form>
   );
 }

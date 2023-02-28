@@ -14,7 +14,7 @@ export function ContactFormPage() {
   });
 
   return (
-    <div className={styles.ContactFormPage}>
+    <div className={styles.ContactPage}>
       <form onSubmit={formik.handleSubmit} noValidate>
         <label htmlFor="">Обращение в техподдержку</label>
         <label>Выберете тему обращения:</label>
